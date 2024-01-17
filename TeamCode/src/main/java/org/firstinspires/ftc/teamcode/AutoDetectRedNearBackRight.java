@@ -148,22 +148,41 @@ public class AutoDetectRedNearBackRight extends LinearOpMode {
         telemetry.addData("Reverse", "");
         telemetry.update();
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
-        encoderDrive(DRIVE_SPEED, 0,   -3, -3, 10);  // S2: Turn Right 12 Inches with 4 Sec timeout
+        encoderDrive(DRIVE_SPEED, 0,   -4, -4, 10);  // S2: Turn Right 12 Inches with 4 Sec timeout
         telemetry.addData("Turning left", "");
         telemetry.update();
 
         //turn left
         robot.setMotorsMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        robot.driveRobot(0, TURN_SPEED);
-        sleep(3700);
+        robot.driveRobot(0, -TURN_SPEED);
+        sleep(3500);
 
         //go straight
         robot.setMotorsMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.setMotorsMode(DcMotor.RunMode.RUN_USING_ENCODER);
         telemetry.addData("go to back stage", "");
         telemetry.update();
-        encoderDrive(DRIVE_SPEED, 0,    -52, -52, 10);
+        encoderDrive(DRIVE_SPEED, 0,    50, 50, 10);
         //encoderDrive(DRIVE_SPEED, 24, 24, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
+
+        /* Code for placing pixel on backdrop (indicated by tape marks) */
+        telemetry.addData("Path", "Complete");
+        telemetry.update();
+        robot.moveArmFullSpeed(-0.45);
+        telemetry.addData("Arm", "moved over");
+        telemetry.update();
+        sleep(700);
+
+        sleep(500);
+
+        telemetry.addData("Path", "Complete");
+        telemetry.update();
+        robot.moveElbowToPosition(0.4);
+        telemetry.addData("Elbow", "moved over");
+        telemetry.update();
+        sleep(750);
+
+        sleep(1500);
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
