@@ -112,11 +112,11 @@ public class AutoDetectRedFarBackRight extends LinearOpMode {
 
             while (opModeIsActive() && !isStopRequested()) {
 
-                /*if (centerSelectedDirection == FirstVisionProcessor.Selected.LEFT) {
+                if (centerSelectedDirection == FirstVisionProcessor.Selected.LEFT) {
                     telemetry.addData("Travelling Left", "");
-                    telemetry.update();*/
+                    telemetry.update();
                     travelLeft();
-                /*}
+                }
                 else if (centerSelectedDirection == FirstVisionProcessor.Selected.RIGHT) {
                     telemetry.addData("Travelling Right", "");
                     telemetry.update();
@@ -126,7 +126,7 @@ public class AutoDetectRedFarBackRight extends LinearOpMode {
                     telemetry.addData("Travelling Straight", "");
                     telemetry.update();
                     travelStraight();
-                }*/
+                }
                 break;
             }
         }
@@ -340,7 +340,7 @@ public class AutoDetectRedFarBackRight extends LinearOpMode {
         robot.setMotorsMode(DcMotor.RunMode.RUN_USING_ENCODER);
         telemetry.addData("go forward", "");
         telemetry.update();
-        encoderDrive(DRIVE_SPEED, 0, 7,  7, 10);  // S1: Forward 47 Inches with 5 Sec timeout
+        encoderDrive(DRIVE_SPEED, 0, 8.5,  8.5, 10);  // S1: Forward 47 Inches with 5 Sec timeout
 
         //reverse
         telemetry.addData("Reverse", "");
@@ -366,20 +366,20 @@ public class AutoDetectRedFarBackRight extends LinearOpMode {
         //turn left
         robot.setMotorsMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.driveRobot(0, -TURN_SPEED);
-        sleep(2500);
+        sleep(4000);
 
         //go straight
         robot.setMotorsMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.setMotorsMode(DcMotor.RunMode.RUN_USING_ENCODER);
         telemetry.addData("go to back stage", "");
         telemetry.update();
-        encoderDrive(DRIVE_SPEED, 0,    105, 105, 30);
+        encoderDrive(DRIVE_SPEED, 0,    96, 96, 30);
         //encoderDrive(DRIVE_SPEED, 24, 24, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
 
         //turn left
         robot.setMotorsMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.driveRobot(0, TURN_SPEED);
-        sleep(2500);
+        sleep(3500);
 
         //go straight
         robot.setMotorsMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -391,7 +391,7 @@ public class AutoDetectRedFarBackRight extends LinearOpMode {
 
         robot.setMotorsMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.driveRobot(0, TURN_SPEED);
-        sleep(2500);
+        sleep(2700);
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
