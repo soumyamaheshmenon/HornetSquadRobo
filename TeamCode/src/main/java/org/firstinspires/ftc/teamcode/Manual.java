@@ -18,7 +18,7 @@ public class Manual  extends LinearOpMode{
     public void runOpMode() {
         // initialize all the hardware, using the hardware class. See how clean and simple this is?
         robot.init();
-        robot.initCamera();
+        //robot.initCamera();
 
         // Send telemetry message to signify robot waiting;
         // Wait for the game to start (driver presses PLAY)
@@ -172,6 +172,7 @@ public class Manual  extends LinearOpMode{
         */
     }
 
+    /*
     private void telemetryAprilTag(){
         List<AprilTagDetection> currentDetections = robot.getAprilTag().getDetections();
         telemetry.addData("# AprilTags Detected", currentDetections.size());
@@ -194,4 +195,6 @@ public class Manual  extends LinearOpMode{
             }
         }   // end for() loop
     }
+
+     */
 }

@@ -1,5 +1,7 @@
 /*
  * Base code to manage the robot. Baseline copied from FtcRobotController sample code
+ *
+ * HR-01: @Ryan     Remove sensor setup data
  */
 
 package org.firstinspires.ftc.teamcode;
@@ -85,14 +87,14 @@ public class RobotHardware {
     private static final boolean USE_WEBCAM = true;
 
     //color sensor
-    private NormalizedColorSensor leftColorSensor;
-    private NormalizedColorSensor rightColorSensor;
+    //private NormalizedColorSensor leftColorSensor;
+    //private NormalizedColorSensor rightColorSensor;
 
     //distance sensor
-    private DistanceSensor sensorDistance;
+    //private DistanceSensor sensorDistance;
 
     //The variable to store our instance of the AprilTag processor.
-    private AprilTagProcessor aprilTag;
+    //private AprilTagProcessor aprilTag;
 
     //The variable to store our instance of the TensorFlow Object Detection processor.
     private TfodProcessor tfod;
@@ -157,26 +159,27 @@ public class RobotHardware {
         // ColorSensor, because NormalizedColorSensor consistently gives values between 0 and 1, while
         // the values you get from ColorSensor are dependent on the specific sensor you're using.
         /* when ready to use the left/right color sensor*/
-        leftColorSensor = myOpMode.hardwareMap.get(NormalizedColorSensor.class, "color_left");
-        rightColorSensor = myOpMode.hardwareMap.get(NormalizedColorSensor.class, "color_right");
+        //leftColorSensor = myOpMode.hardwareMap.get(NormalizedColorSensor.class, "color_left");
+        //rightColorSensor = myOpMode.hardwareMap.get(NormalizedColorSensor.class, "color_right");
 
 
         // you can use this as a regular DistanceSensor.
-        sensorDistance = myOpMode.hardwareMap.get(DistanceSensor.class, "distance_sensor");
+        //sensorDistance = myOpMode.hardwareMap.get(DistanceSensor.class, "distance_sensor");
 
         // methods associated with the Rev2mDistanceSensor class.
-        Rev2mDistanceSensor sensorTimeOfFlight = (Rev2mDistanceSensor) sensorDistance;
+        //Rev2mDistanceSensor sensorTimeOfFlight = (Rev2mDistanceSensor) sensorDistance;
 
         myOpMode.telemetry.addData("Status", "Hardware Initialized");
         myOpMode.telemetry.update();
     }
 
+    /* Commented out APRIL Tag Details
     /**
      * Initialize all the robot's camera.
      * This method must be called ONCE when the OpMode is initialized.
      * <p>
      * All of the hardware devices are accessed via the hardware map, and initialized.
-     */
+     * /
     public void initCamera() {
         // -----------------------------------------------------------------------------------------
         // AprilTag Configuration
@@ -209,9 +212,10 @@ public class RobotHardware {
         }
     }   // end initDoubleVision()
 
-    public AprilTagProcessor getAprilTag(){
+    //public AprilTagProcessor getAprilTag(){
         return aprilTag;
     }
+    */
 
     public void setMotorsMode(DcMotor.RunMode MotorRunMode) {
         rfMotor.setMode(MotorRunMode);
@@ -409,6 +413,7 @@ public class RobotHardware {
         launcher.setPosition(LAUNCHER_MIN);
     }
 
+    /*
     public double getDistanceFromObject(){
         return sensorDistance.getDistance(DistanceUnit.INCH);
     }
@@ -420,4 +425,5 @@ public class RobotHardware {
     public NormalizedRGBA getLeftColorSensorData(){
         return leftColorSensor.getNormalizedColors();
     }
+     */
 }
