@@ -110,7 +110,7 @@ public class AutoDetectRedNearBackRight extends LinearOpMode {
 
             while (opModeIsActive() && !isStopRequested()) {
 
-                if (centerSelectedDirection == FirstVisionProcessor.Selected.LEFT) {
+               /*if (centerSelectedDirection == FirstVisionProcessor.Selected.LEFT) {
                     telemetry.addData("Travelling Left", "");
                     telemetry.update();
                     travelLeft();
@@ -118,13 +118,15 @@ public class AutoDetectRedNearBackRight extends LinearOpMode {
                 else if (centerSelectedDirection == FirstVisionProcessor.Selected.RIGHT) {
                     telemetry.addData("Travelling Right", "");
                     telemetry.update();
+
+                */
                     travelRight();
-                }
+                /*}
                 else {
                     telemetry.addData("Travelling Straight", "");
                     telemetry.update();
                     travelStraight();
-                }
+                }*/
                 break;
             }
         }
@@ -155,7 +157,7 @@ public class AutoDetectRedNearBackRight extends LinearOpMode {
         //turn left
         robot.setMotorsMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.driveRobot(0, -TURN_SPEED);
-        sleep(3500);
+        sleep(3800);
 
         //go straight
         robot.setMotorsMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -168,12 +170,12 @@ public class AutoDetectRedNearBackRight extends LinearOpMode {
         /* Code for placing pixel on backdrop (indicated by tape marks) */
         telemetry.addData("Path", "Complete");
         telemetry.update();
+        dropPixelOnBoard();
+
         robot.moveArmFullSpeed(-0.45);
         telemetry.addData("Arm", "moved over");
         telemetry.update();
-        sleep(700);
-
-        sleep(500);
+        sleep(300);
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
@@ -285,27 +287,27 @@ public class AutoDetectRedNearBackRight extends LinearOpMode {
         //turn right
         robot.setMotorsMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.driveRobot(0, -TURN_SPEED);
-        sleep(1200);
+        sleep(1400);
 
         //forward
         robot.setMotorsMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.setMotorsMode(DcMotor.RunMode.RUN_USING_ENCODER);
         telemetry.addData("go forward", "");
         telemetry.update();
-        encoderDrive(DRIVE_SPEED, 0, 12,  12, 10);  // S1: Forward 47 Inches with 5 Sec timeout
+        encoderDrive(DRIVE_SPEED, 0, 13,  13, 10);  // S1: Forward 47 Inches with 5 Sec timeout
 
         //reverse
         telemetry.addData("Reverse", "");
         telemetry.update();
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
-        encoderDrive(DRIVE_SPEED, 0,   -11, -11, 10);  // S2: Turn Right 12 Inches with 4 Sec timeout
+        encoderDrive(DRIVE_SPEED, 0,   -12, -12, 10);  // S2: Turn Right 12 Inches with 4 Sec timeout
         telemetry.addData("Turning left", "");
         telemetry.update();
 
         //turn left
         robot.setMotorsMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.driveRobot(0, -TURN_SPEED);
-        sleep(1500);
+        sleep(1700);
 
         //go straight
         robot.setMotorsMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -316,15 +318,23 @@ public class AutoDetectRedNearBackRight extends LinearOpMode {
         //encoderDrive(DRIVE_SPEED, 24, 24, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
 
         robot.setMotorsMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        robot.driveRobot(0, TURN_SPEED);
-        sleep(7000);
+        robot.driveRobot(0, -TURN_SPEED);
+        sleep(700);
 
-        telemetry.addData("Path", "Complete");
+        //go straight
+        robot.setMotorsMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.setMotorsMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        telemetry.addData("go to back stage", "");
         telemetry.update();
-        robot.moveGrabberToPosition(RobotHardware.GRABBER_MIN);
-        telemetry.addData("Grabber", "released");
+        encoderDrive(DRIVE_SPEED, 0,    12, 12, 10);
+
+        dropPixelOnBoard();
+
+        robot.setMotorsMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.setMotorsMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        telemetry.addData("go to back stage", "");
         telemetry.update();
-        sleep(100);  // pause to display final telemetry message.
+        encoderDrive(DRIVE_SPEED, 0,    -3, -3, 10);
     }
     /*
      *  Method to perform a relative move, based on encoder counts.
@@ -381,5 +391,29 @@ public class AutoDetectRedNearBackRight extends LinearOpMode {
 
             sleep(250);   // optional pause after each move.
         }
+
+
+    }
+    public void dropPixelOnBoard() {
+        robot.moveArmFullSpeed(-0.45);
+        telemetry.addData("Arm", "moved over");
+        telemetry.update();
+        sleep(300);
+
+        telemetry.addData("Path", "Complete");
+        telemetry.update();
+        robot.moveElbowToPosition(0.4);
+        telemetry.addData("Elbow", "moved over");
+        telemetry.update();
+        sleep(750);
+
+        sleep(1500);
+
+        telemetry.addData("Path", "Complete");
+        telemetry.update();
+        robot.moveGrabberToPosition(RobotHardware.GRABBER_MIN);
+        telemetry.addData("Grabber", "released");
+        telemetry.update();
+        sleep(100);
     }
 }
