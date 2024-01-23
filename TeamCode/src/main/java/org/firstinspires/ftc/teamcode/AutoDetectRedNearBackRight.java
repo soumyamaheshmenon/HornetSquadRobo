@@ -314,19 +314,19 @@ public class AutoDetectRedNearBackRight extends LinearOpMode {
         robot.setMotorsMode(DcMotor.RunMode.RUN_USING_ENCODER);
         telemetry.addData("go to back stage", "");
         telemetry.update();
-        encoderDrive(DRIVE_SPEED, 0,    43, 43, 10);
+        encoderDrive(DRIVE_SPEED, 0,    35, 35, 10);
         //encoderDrive(DRIVE_SPEED, 24, 24, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
 
         robot.setMotorsMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         robot.driveRobot(0, -TURN_SPEED);
-        sleep(700);
+        sleep(1000);
 
         //go straight
         robot.setMotorsMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.setMotorsMode(DcMotor.RunMode.RUN_USING_ENCODER);
         telemetry.addData("go to back stage", "");
         telemetry.update();
-        encoderDrive(DRIVE_SPEED, 0,    12, 12, 10);
+        encoderDrive(DRIVE_SPEED, 0,    17, 17, 10);
 
         dropPixelOnBoard();
 
@@ -398,16 +398,16 @@ public class AutoDetectRedNearBackRight extends LinearOpMode {
         robot.moveArmFullSpeed(-0.45);
         telemetry.addData("Arm", "moved over");
         telemetry.update();
-        sleep(300);
+        sleep(250);
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
-        robot.moveElbowToPosition(0.4);
+        robot.moveElbowToPosition(0.5);
         telemetry.addData("Elbow", "moved over");
         telemetry.update();
         sleep(750);
 
-        sleep(1500);
+        sleep(1250);
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
@@ -415,5 +415,12 @@ public class AutoDetectRedNearBackRight extends LinearOpMode {
         telemetry.addData("Grabber", "released");
         telemetry.update();
         sleep(100);
+
+        telemetry.addData("Path", "Complete");
+        telemetry.update();
+        robot.moveElbowToPosition(-0.5);
+        telemetry.addData("Elbow", "moved over");
+        telemetry.update();
+        sleep(750);
     }
 }
