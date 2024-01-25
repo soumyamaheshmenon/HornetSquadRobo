@@ -110,7 +110,7 @@ public class AutoDetectRedNearBackRight extends LinearOpMode {
 
             while (opModeIsActive() && !isStopRequested()) {
 
-               /*if (centerSelectedDirection == FirstVisionProcessor.Selected.LEFT) {
+               if (centerSelectedDirection == FirstVisionProcessor.Selected.LEFT) {
                     telemetry.addData("Travelling Left", "");
                     telemetry.update();
                     travelLeft();
@@ -118,15 +118,13 @@ public class AutoDetectRedNearBackRight extends LinearOpMode {
                 else if (centerSelectedDirection == FirstVisionProcessor.Selected.RIGHT) {
                     telemetry.addData("Travelling Right", "");
                     telemetry.update();
-
-                */
                     travelRight();
-                /*}
+                }
                 else {
                     telemetry.addData("Travelling Straight", "");
                     telemetry.update();
                     travelStraight();
-                }*/
+                }
                 break;
             }
         }
