@@ -128,6 +128,7 @@ public class RobotHardware {
 
         setMotorDirection(MotorDirection.FORWARD);
 
+        /*
         //servos
         launcher = myOpMode.hardwareMap.get(Servo.class, "launcher");
         //launcher.setDirection(Servo.Direction.REVERSE);
@@ -156,7 +157,7 @@ public class RobotHardware {
         // Get a reference to our sensor object. It's recommended to use NormalizedColorSensor over
         // ColorSensor, because NormalizedColorSensor consistently gives values between 0 and 1, while
         // the values you get from ColorSensor are dependent on the specific sensor you're using.
-        /* when ready to use the left/right color sensor*/
+        /* when ready to use the left/right color sensor * /
         leftColorSensor = myOpMode.hardwareMap.get(NormalizedColorSensor.class, "color_left");
         rightColorSensor = myOpMode.hardwareMap.get(NormalizedColorSensor.class, "color_right");
 
@@ -166,6 +167,7 @@ public class RobotHardware {
 
         // methods associated with the Rev2mDistanceSensor class.
         Rev2mDistanceSensor sensorTimeOfFlight = (Rev2mDistanceSensor) sensorDistance;
+        */
 
         myOpMode.telemetry.addData("Status", "Hardware Initialized");
         myOpMode.telemetry.update();
